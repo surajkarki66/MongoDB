@@ -1,6 +1,7 @@
 import mongodb from "mongodb";
 
 import listDatabase from "./listDatabase";
+import insertOne from "./crud/insertOne";
 
 export default async function makeDb() {
   const MongoClient = mongodb.MongoClient;
@@ -13,6 +14,14 @@ export default async function makeDb() {
     const c = await client.connect();
     // Listing the databases
     await listDatabase(c);
+
+    // Inserting Single Element
+    await insertOne(c, {
+      name: "Kings House",
+      summary: "A great house in Nepal.",
+      bedrooms: 2,
+      bathrooms: 2,
+    });
   } catch (e) {
     console.log(e);
   } finally {
