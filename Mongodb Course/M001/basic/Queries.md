@@ -128,3 +128,10 @@ db.movieDetails.updateOne({ title: "Suraj"}, { $set: { title: "Suraj", imdb: "tt
 ## Replace One:
 
 With replaceOne() you can only replace the entire document, while updateOne() allows for updating fields.
+
+## Delete
+### DeleteOne
+db.reviews.deleteOne({_id: ObjectId("5f23b0a7f2e387a6024c8dac")})
+
+### DeleteMany
+db.reviews.deleteMany({reviewer_id: 759723314})
