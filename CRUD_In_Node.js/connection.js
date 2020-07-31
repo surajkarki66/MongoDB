@@ -11,6 +11,8 @@ import readOneByName from "./crud/readOneByName";
 import readMany from "./crud/readMany";
 import read from "./crud/read";
 
+import updateOne from "./crud/updateOne";
+
 export default async function makeDb(action) {
   const MongoClient = mongodb.MongoClient;
   const url = "mongodb://localhost:27017";
@@ -46,6 +48,10 @@ export default async function makeDb(action) {
           minimumNumberOfBathrooms: 2,
           maximumNumberOfResults: 5,
         });
+        break;
+
+      case "UPDATEONE":
+        await updateOne(client, "Solti Hotel", { beds: 2 });
         break;
 
       default:
