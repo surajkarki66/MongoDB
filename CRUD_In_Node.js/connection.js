@@ -9,6 +9,7 @@ import insertMany from "./crud/insertMany";
 
 import readOneByName from "./crud/readOneByName";
 import readMany from "./crud/readMany";
+import read from "./crud/read";
 
 export default async function makeDb(action) {
   const MongoClient = mongodb.MongoClient;
@@ -36,6 +37,14 @@ export default async function makeDb(action) {
         await readMany(c, {
           bedrooms: { $gte: 2 },
           bathrooms: { $gte: 2 },
+        });
+        break;
+
+      case "READ":
+        await read(c, {
+          minimumNumberOfBedrooms: 2,
+          minimumNumberOfBathrooms: 2,
+          maximumNumberOfResults: 5,
         });
         break;
 
