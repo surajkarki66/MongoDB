@@ -4,6 +4,8 @@ import listDatabase from "./listDatabase";
 import insertOne from "./crud/insertOne";
 import insertMany from "./crud/insertMany";
 
+import readOneByName from "./crud/readOneByName";
+
 export default async function makeDb(action) {
   const MongoClient = mongodb.MongoClient;
   const url = "mongodb://localhost:27017";
@@ -50,6 +52,10 @@ export default async function makeDb(action) {
             last_review: new Date(),
           },
         ]);
+        break;
+
+      case "READ_ONE_BY_NAME":
+        await readOneByName(c, { name: "Kings House" });
         break;
 
       default:
