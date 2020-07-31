@@ -12,6 +12,7 @@ import readMany from "./crud/readMany";
 import read from "./crud/read";
 
 import updateOne from "./crud/updateOne";
+import upsertOne from "./crud/upsertOne";
 
 export default async function makeDb(action) {
   const MongoClient = mongodb.MongoClient;
@@ -52,6 +53,14 @@ export default async function makeDb(action) {
 
       case "UPDATEONE":
         await updateOne(client, "Solti Hotel", { beds: 2 });
+        break;
+
+      case "UPSERTONE":
+        await upsertOne(c, "Cozy Cottage", {
+          name: "Cozy Cottage",
+          bedrooms: 2,
+          bathrooms: 1,
+        });
         break;
 
       default:
