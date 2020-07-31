@@ -15,6 +15,9 @@ import updateOne from "./crud/updateOne";
 import upsertOne from "./crud/upsertOne";
 import updateMany from "./crud/updateMany";
 
+import deleteOne from "./crud/deleteOne";
+import deleteMany from "./crud/deleteMany";
+
 export default async function makeDb(action) {
   const MongoClient = mongodb.MongoClient;
   const url = "mongodb://localhost:27017";
@@ -66,6 +69,14 @@ export default async function makeDb(action) {
 
       case "UPDATEMANY":
         await updateMany(c);
+        break;
+
+      case "DELETEONE":
+        await deleteOne(c, "Cozy Cottage");
+        break;
+
+      case "DELETEMANY":
+        await deleteMany(client, new Date("2019-02-15"));
         break;
 
       default:

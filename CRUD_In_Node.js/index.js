@@ -1,6 +1,6 @@
 import makeDb from "./connection";
 
-const operation = "UPDATEMANY";
+const operation = "DELETEMANY";
 makeDb(operation).catch((err) => {
   console.log(err);
 });
