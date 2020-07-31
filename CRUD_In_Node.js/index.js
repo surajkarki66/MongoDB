@@ -1,4 +1,6 @@
 import makeDb from "./connection";
-makeDb().catch((err) => {
+
+const operation = "INSERTMANY";
+makeDb(operation).catch((err) => {
   console.log(err);
 });
