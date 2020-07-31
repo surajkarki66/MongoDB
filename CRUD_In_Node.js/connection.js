@@ -1,10 +1,14 @@
 import mongodb from "mongodb";
 
+import singleData from "./data/singleData";
+import multipleData from "./data/multipleData";
+
 import listDatabase from "./listDatabase";
 import insertOne from "./crud/insertOne";
 import insertMany from "./crud/insertMany";
 
 import readOneByName from "./crud/readOneByName";
+import readMany from "./crud/readMany";
 
 export default async function makeDb(action) {
   const MongoClient = mongodb.MongoClient;
@@ -17,45 +21,22 @@ export default async function makeDb(action) {
     const c = await client.connect();
     switch (action) {
       case "INSERTONE":
-        // Inserting Single Element
-        await insertOne(c, {
-          name: "Kings House",
-          summary: "A great house in Nepal.",
-          bedrooms: 2,
-          bathrooms: 2,
-        });
+        await insertOne(c, singleData);
         break;
 
       case "INSERTMANY":
-        await insertMany(client, [
-          {
-            name: "Infinite Views",
-            summary: "Modern home with infinite views from the infinity pool",
-            property_type: "House",
-            bedrooms: 5,
-            bathrooms: 4.5,
-            beds: 5,
-          },
-          {
-            name: "Private room in London",
-            property_type: "Apartment",
-            bedrooms: 1,
-            bathroom: 1,
-          },
-          {
-            name: "Beautiful Beach House",
-            summary:
-              "Enjoy relaxed beach living in this house with a private beach",
-            bedrooms: 4,
-            bathrooms: 2.5,
-            beds: 7,
-            last_review: new Date(),
-          },
-        ]);
+        await insertMany(client, multipleData);
         break;
 
       case "READ_ONE_BY_NAME":
         await readOneByName(c, { name: "Kings House" });
+        break;
+
+      case "READ_MANY":
+        await readMany(c, {
+          bedrooms: { $gte: 2 },
+          bathrooms: { $gte: 2 },
+        });
         break;
 
       default:
