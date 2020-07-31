@@ -4,19 +4,19 @@ import singleData from "./data/singleData";
 import multipleData from "./data/multipleData";
 
 import listDatabase from "./listDatabase";
-import insertOne from "./crud/insertOne";
-import insertMany from "./crud/insertMany";
+import insertOne from "./crud/create/insertOne";
+import insertMany from "./crud/create/insertMany";
 
-import readOneByName from "./crud/readOneByName";
-import readMany from "./crud/readMany";
-import read from "./crud/read";
+import readOneByName from "./crud/read/readOneByName";
+import readMany from "./crud/read/readMany";
+import read from "./crud/read/read";
 
-import updateOne from "./crud/updateOne";
-import upsertOne from "./crud/upsertOne";
-import updateMany from "./crud/updateMany";
+import updateOne from "./crud/update/updateOne";
+import upsertOne from "./crud/update/upsertOne";
+import updateMany from "./crud/update/updateMany";
 
-import deleteOne from "./crud/deleteOne";
-import deleteMany from "./crud/deleteMany";
+import deleteOne from "./crud/delete/deleteOne";
+import deleteMany from "./crud/delete/deleteMany";
 
 export default async function makeDb(action) {
   const MongoClient = mongodb.MongoClient;
