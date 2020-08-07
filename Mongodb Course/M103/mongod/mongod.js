@@ -32,6 +32,15 @@ processManagement:
 2) When your config file is complete, launch mongod with the --config command line option:
  ---> mongod --config mongod.conf
 
+In case  of ubuntu(linux)
+$ sudo /etc/mongod.conf
+
+Then edit config file
+
+$ sudo systemctl daemon-reload 
+
+$ sudo systemctl restart mongod
+
 
 <<<<<<<< Basic Commands >>>>>>>>>>
 
@@ -89,5 +98,14 @@ db.setProfilingLevel(1)
 
 3) Get profiling data from system.profile:
 db.system.profile.find({}).pretty()
+
+
+To open mongo with authentication
+$ mongo admin -u username -p password
+
+
+
+<<<<<<<<<<<<<<<<<<<< Basic Security >>>>>>>>>>>>>>>>>>>>>>
+
 
 */
