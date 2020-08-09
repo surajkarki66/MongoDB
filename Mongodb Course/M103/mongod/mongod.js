@@ -227,6 +227,7 @@ tail products.json
 
 -> Use mongoimport to create a MongoDB collection from a JSON or CSV file:
 mongoimport --port 30000 products.json
+$ mongoimport --db <dbname> --collection <collectionName> --file filePath  --port 29000 -u "<username>" -p "<password>" --authenticationDatabase "<name>"
 
 
 */
