@@ -49,7 +49,7 @@ db.nycFacilities.aggregate([
         coordinates: [-73.98, 40.75], // here this coordinates is the specified point.
       },
       distanceField: "distanceFromMongoDB",
-      query: { type: "Hospital" },
+      query: { type: "Hospital" }, // filtering the incomming documents.
       spherical: true,
     },
   },
