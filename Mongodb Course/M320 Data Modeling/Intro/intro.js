@@ -10,5 +10,4 @@ handle and choose how to model those relationship.
 
 -> The third phase is to apply design patterns or transformation to the current model.
 
-
 */
