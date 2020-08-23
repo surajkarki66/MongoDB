@@ -1,0 +1,3 @@
+{
+  "presets": ["@babel/preset-env"] //This allows us to code in the latest possible version of javascript without having to manually configure that ourselves.
+}
